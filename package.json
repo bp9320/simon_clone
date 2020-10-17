@@ -1,0 +1,11 @@
+{
+  "name": "simon_clone",
+  "version": "1.0.0",
+  "description": "Spinoff of the classic pattern memorization game Simon.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Brian Pirot",
+  "license": "ISC"
+}
