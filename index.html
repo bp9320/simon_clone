@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./resources/css/main.css" />
+    <title>Simon Clone</title>
+  </head>
+  <body>
+    <header>
+      <h1 class="title">Simon Clone</h1>
+    </header>
+
+    <div id="patternDisplayCircle" class="circle circle--hide"></div>
+    <button id="btn">Start!</button>
+
+    <div id="playerInputs">
+      <div
+        id="blueCircle"
+        class="circle circle--blue"
+        data-color-index="0"
+      ></div>
+      <div
+        id="redCircle"
+        class="circle circle--red playerInput"
+        data-color-index="1"
+      ></div>
+      <div
+        id="yellowCircle"
+        class="circle circle--yellow"
+        data-color-index="2"
+      ></div>
+      <div
+        id="greenCircle"
+        class="circle circle--green"
+        data-color-index="3"
+      ></div>
+    </div>
+    <script src="./resources/scripts/index.js"></script>
+  </body>
+</html>
