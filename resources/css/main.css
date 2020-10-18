@@ -14,16 +14,47 @@ header {
 
 #playerInputs {
   display: flex;
+  width: 70%;
   flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .circle {
   height: 200px;
   width: 200px;
+  min-height: 20px;
+  min-width: 20px;
+  flex-shrink: 1;
   border: 5px solid black;
   background-color: dodgerblue;
   border-radius: 200px;
   margin: 5px;
+}
+
+#patternDisplayCircle {
+  transition: opacity 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+}
+
+.patternDisplayCircle--finished {
+  opacity: 1;
+  background-color: transparent;
+}
+
+#playerInputs .circle:hover {
+  transform: scale(1.1);
+}
+
+#playerInputs .circle:active {
+  transform: scale(1);
+}
+
+#playerInputs .circle {
+  transition: all 0.1s;
 }
 
 .circle--hide {

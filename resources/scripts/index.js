@@ -1,5 +1,5 @@
 const domStrings = {
-  patternDisplayCircle: "#patternDisplayCircle",
+  patternDisplayCircle: '#patternDisplayCircle',
 };
 
 var gameActive = false;
@@ -8,7 +8,7 @@ var playersTurn = false;
 var computersColorPattern = [];
 var playersColorPattern = [];
 
-let colors = ["blue", "red", "yellow", "green"];
+let colors = ['blue', 'red', 'yellow', 'green'];
 
 const playGame = () => {
   gameActive = true;
@@ -30,6 +30,8 @@ const patternDisplayCircle = document.querySelector(
 );
 
 let displayPattern = () => {
+  patternDisplayCircle.classList.add('circle--hide');
+  patternDisplayCircle.innerText = '';
   let counter = 0;
   let intervalId = setInterval(() => {
     if (counter < computersColorPattern.length * 2) {
@@ -38,10 +40,13 @@ let displayPattern = () => {
           colors[computersColorPattern[counter / 2]];
       }
       counter++;
-      patternDisplayCircle.classList.toggle("circle--hide");
+      patternDisplayCircle.classList.toggle('circle--hide');
     } else {
       clearInterval(intervalId);
-      alert("Players turn");
+      patternDisplayCircle.innerText = 'GO!';
+      patternDisplayCircle.style.removeProperty('background-color');
+      patternDisplayCircle.classList.add('patternDisplayCircle--finished');
+      patternDisplayCircle.classList.remove('circle--hide');
       startPlayersTurn();
     }
   }, 500);
@@ -54,20 +59,20 @@ let playerCircleClickHandler = (e) => {
 };
 
 let checkPlayerGuessedCorrectly = (playerInput) => {
-  console.log("Checking if player guessed correctly.");
+  console.log('Checking if player guessed correctly.');
   if (playerInput !== playersColorPattern.shift()) {
-    console.log("Incorrect guess. Ending Game.");
+    console.log('Incorrect guess. Ending Game.');
     endGame();
   } else {
-    console.log("Correct Guess");
+    console.log('Correct Guess');
     checkIfTurnEnded();
   }
 };
 
 let checkIfTurnEnded = () => {
-  console.log("Checking if turn ended.");
+  console.log('Checking if turn ended.');
   if (playersColorPattern.length === 0) {
-    console.log("Ending Turn.");
+    console.log('Ending Turn.');
     endTurn();
   }
 };
@@ -81,11 +86,11 @@ let endGame = () => {
   gameActive = false;
   alert(
     `You lasted ${computersColorPattern.length - 1} round${
-      computersColorPattern.length - 1 === 1 ? "" : "s"
+      computersColorPattern.length - 1 === 1 ? '' : 's'
     }!`
   );
 };
-document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("btn").addEventListener("click", playGame);
-  document.addEventListener("click", playerCircleClickHandler);
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('btn').addEventListener('click', playGame);
+  document.addEventListener('click', playerCircleClickHandler);
 });
