@@ -1,15 +1,55 @@
+:root {
+  --color-0: blue;
+  --color-1: red;
+  --color-2: yellow;
+  --color-3: green;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 10px;
+}
+
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  background-color: floralwhite;
 }
 
 header {
+  position: fixed;
+  z-index: 100;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+h2,
+h3 {
+  font-family: 'Biryani', sans-serif;
+}
+
+h2 {
+  font-size: 4rem;
+  margin: 1.5rem;
+}
+
+h3 {
+  font-size: 3rem;
+  margin: 1.5rem;
+}
+
+.title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 5rem;
+  margin-top: 1rem;
+  -webkit-text-stroke-width: 0.1rem;
+  -webkit-text-stroke-color: black;
 }
 
 #playerInputs {
@@ -20,6 +60,63 @@ header {
   flex-wrap: wrap;
 }
 
+.intro {
+  position: absolute;
+  background-color: floralwhite;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s ease-in;
+}
+
+.background-blur {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  filter: blur(5px);
+  /* background-color: floralwhite; */
+  background-image: url('../brain-background.png');
+
+  background-position: center;
+  background-size: cover;
+}
+
+.intro-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro-container--background {
+  background-color: rgba(255, 250, 240, 0.5);
+  height: 100vh;
+}
+
+.intro-container__group {
+  width: 66%;
+  margin: 2.5rem;
+}
+
+.intro--hidden {
+  transform: translateY(-100vh);
+}
+
+.game-container {
+  display: absolute;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .circle {
   height: 200px;
   width: 200px;
@@ -27,7 +124,7 @@ header {
   min-width: 20px;
   flex-shrink: 1;
   border: 5px solid black;
-  background-color: dodgerblue;
+  background-color: transparent;
   border-radius: 200px;
   margin: 5px;
 }
@@ -61,18 +158,34 @@ header {
   opacity: 0;
 }
 
-.circle--blue {
-  background-color: blue;
+.circle--color-0 {
+  background-color: var(--color-0);
 }
 
-.circle--red {
-  background-color: red;
+.circle--color-1 {
+  background-color: var(--color-1);
 }
 
-.circle--yellow {
-  background-color: yellow;
+.circle--color-2 {
+  background-color: var(--color-2);
 }
 
-.circle--green {
-  background-color: green;
+.circle--color-3 {
+  background-color: var(--color-3);
+}
+
+.title__letter--color-0 {
+  color: var(--color-0);
+}
+
+.title__letter--color-1 {
+  color: var(--color-1);
+}
+
+.title__letter--color-2 {
+  color: var(--color-2);
+}
+
+.title__letter--color-3 {
+  color: var(--color-3);
 }
