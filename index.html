@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./resources/css/main.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Biryani&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <script defer src="./resources/scripts/index.js"></script>
     <title>Simon Clone</title>
   </head>
   <body>
@@ -11,27 +16,69 @@
       <h1 class="title">Simon Clone</h1>
     </header>
 
-    <div id="patternDisplayCircle" class="circle circle--hide"></div>
-    <button id="btn">Start!</button>
+    <section class="intro">
+      <div class="background-blur"></div>
+      <div class="intro-container intro-container--background">
+        <div class="intro-container intro-container__group">
+          <h2>Welcome to my color pattern memorization game!</h2>
 
-    <div id="playerInputs">
-      <div
-        id="blueCircle"
-        class="circle circle--blue"
-        data-color-index="0"
-      ></div>
-      <div id="redCircle" class="circle circle--red" data-color-index="1"></div>
-      <div
-        id="yellowCircle"
-        class="circle circle--yellow"
-        data-color-index="2"
-      ></div>
-      <div
-        id="greenCircle"
-        class="circle circle--green"
-        data-color-index="3"
-      ></div>
-    </div>
-    <script src="./resources/scripts/index.js"></script>
+          <p>
+            This game came about when trying to come up with ideas for projects
+            to build to practice my JavaScript. When thinking about games from
+            the past that would be fun to clone, the classic pattern matching
+            game
+            <a href="https://en.wikipedia.org/wiki/Simon_(game)" target="_blank"
+              >Simon</a
+            >
+            came to mind. After mentioning the idea to my kid who gave it a
+            thumbs up, it was time to get to work.
+          </p>
+        </div>
+
+        <div class="intro-container intro-container__group">
+          <h3>How to Play</h3>
+          <ul>
+            <li>
+              After reading the instructions, click the start button to reveal
+              the game.
+            </li>
+            <li>
+              A 3 second countdown will run, then the first colored circle will
+              appear.
+            </li>
+            <li>
+              When the pattern display circle says "GO!", click on the circle
+              with the same color that was previously displayed.
+            </li>
+            <li>
+              If you clicked the correct colored circle, pattern display circle
+              will fade out and the pattern will play again, adding an
+              additional, randomly selected color to the end of the pattern each
+              time.
+            </li>
+            <li>
+              If you click on an incorrect circle, the game will end, and you
+              will be notified of how many rounds you successfully completed.
+            </li>
+          </ul>
+        </div>
+
+        <div class="intro-container intro-container__group">
+          <h3>Ready to give it a try?</h3>
+          <button id="btn">Let's Do This!</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="game-container">
+      <div id="patternDisplayCircle" class="circle circle--hide"></div>
+
+      <div id="playerInputs">
+        <div class="circle circle--color-0" data-color-index="0"></div>
+        <div class="circle circle--color-1" data-color-index="1"></div>
+        <div class="circle circle--color-2" data-color-index="2"></div>
+        <div class="circle circle--color-3" data-color-index="3"></div>
+      </div>
+    </section>
   </body>
 </html>

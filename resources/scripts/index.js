@@ -1,5 +1,7 @@
 const domStrings = {
   patternDisplayCircle: '#patternDisplayCircle',
+  introSection: '.intro',
+  title: '.title',
 };
 
 var gameActive = false;
@@ -10,9 +12,25 @@ var playersColorPattern = [];
 
 let colors = ['blue', 'red', 'yellow', 'green'];
 
+const colorizeTitle = () => {
+  let title = document.querySelector(domStrings.title);
+  let titleArray = title.textContent.split('').map((letter, i) => {
+    return `<span class="title__letter--color-${
+      i % colors.length
+    }">${letter}</span>`;
+  });
+  title.textContent = '';
+  title.insertAdjacentHTML('afterbegin', titleArray.join(''));
+};
+
+colorizeTitle();
+
 const playGame = () => {
   gameActive = true;
-  runComputersTurn();
+  document
+    .querySelector(domStrings.introSection)
+    .classList.add('intro--hidden');
+  setTimeout(runComputersTurn, 3000);
 };
 
 const runComputersTurn = () => {
@@ -21,7 +39,7 @@ const runComputersTurn = () => {
 };
 
 const startPlayersTurn = () => {
-  playersColorPattern = computersColorPattern.map((val) => val.toString());
+  playersColorPattern = computersColorPattern.map(val => val.toString());
   playersTurn = true;
 };
 
@@ -29,15 +47,18 @@ const patternDisplayCircle = document.querySelector(
   domStrings.patternDisplayCircle
 );
 
-let displayPattern = () => {
+const displayPattern = () => {
   patternDisplayCircle.classList.add('circle--hide');
   patternDisplayCircle.innerText = '';
   let counter = 0;
+  let curColor;
   let intervalId = setInterval(() => {
     if (counter < computersColorPattern.length * 2) {
       if (counter % 2 === 0) {
-        patternDisplayCircle.style.backgroundColor =
-          colors[computersColorPattern[counter / 2]];
+        curColor = computersColorPattern[counter / 2];
+        patternDisplayCircle.classList.add(`circle--color-${curColor}`);
+      } else {
+        patternDisplayCircle.classList.remove(`circle--color-${curColor}`);
       }
       counter++;
       patternDisplayCircle.classList.toggle('circle--hide');
@@ -52,13 +73,13 @@ let displayPattern = () => {
   }, 500);
 };
 
-let playerCircleClickHandler = (e) => {
+let playerCircleClickHandler = e => {
   if (e.target.dataset.colorIndex && playersTurn) {
     checkPlayerGuessedCorrectly(e.target.dataset.colorIndex);
   }
 };
 
-let checkPlayerGuessedCorrectly = (playerInput) => {
+let checkPlayerGuessedCorrectly = playerInput => {
   console.log('Checking if player guessed correctly.');
   if (playerInput !== playersColorPattern.shift()) {
     console.log('Incorrect guess. Ending Game.');
