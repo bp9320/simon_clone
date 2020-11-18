@@ -137,11 +137,6 @@ h3 {
   font-size: 50px;
 }
 
-.patternDisplayCircle--finished {
-  opacity: 1;
-  background-color: transparent;
-}
-
 #playerInputs .circle:hover {
   transform: scale(1.1);
 }
