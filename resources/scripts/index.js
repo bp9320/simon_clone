@@ -3,6 +3,7 @@ import titleView from './views/TitleView.js';
 import introView from './views/IntroView.js';
 import patternDisplayView from './views/PatternDisplayView.js';
 import playerInputsView from './views/PlayerInputsView.js';
+import gameOverView from './views/GameOverView.js';
 
 const controlPlayGame = () => {
   model.toggleGameActive();
@@ -46,11 +47,12 @@ const endTurn = () => {
 
 const endGame = () => {
   model.toggleGameActive();
-  alert(
-    `You lasted ${model.state.computersColorPattern.length - 1} round${
-      model.state.computersColorPattern.length - 1 === 1 ? '' : 's'
-    }!`
-  );
+  gameOverView.render(model.state.computersColorPattern.length - 1);
+  // alert(
+  //   `You lasted ${model.state.computersColorPattern.length - 1} round${
+  //     model.state.computersColorPattern.length - 1 === 1 ? '' : 's'
+  //   }!`
+  // );
 };
 
 const init = function () {

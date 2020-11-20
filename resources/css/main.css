@@ -30,7 +30,8 @@ header {
 }
 
 h2,
-h3 {
+h3,
+.gameOver__message {
   font-family: 'Biryani', sans-serif;
 }
 
@@ -183,4 +184,37 @@ h3 {
 
 .title__letter--color-3 {
   color: var(--color-3);
+}
+
+#gameOverSection {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(120, 120, 120, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#gameOverModal {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: dodgerblue;
+  padding: 3rem;
+  border-radius: 0.8rem;
+}
+
+.gameOver__message {
+  margin-bottom: 1rem;
+}
+
+#gameOverSection.hidden {
+  display: none;
+  opacity: 0;
+  z-index: -1;
 }
