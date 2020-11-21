@@ -9,7 +9,6 @@ class PatternDisplayView {
 
   render(computersColorPattern, turnStartFn) {
     this.clear();
-    console.log(this._countdownElement);
     let counter = 0;
     let curColor;
     const patternLength = computersColorPattern.length;

@@ -4,6 +4,7 @@ import introView from './views/IntroView.js';
 import patternDisplayView from './views/PatternDisplayView.js';
 import playerInputsView from './views/PlayerInputsView.js';
 import gameOverView from './views/GameOverView.js';
+import recordsView from './views/RecordsView.js';
 
 const controlPlayGame = () => {
   model.toggleGameActive();
@@ -58,10 +59,22 @@ const endGame = () => {
   model.toggleGameActive();
   patternDisplayView.renderMessage();
   gameOverView.render(model.state.roundsPassed);
+  checkPersonalBest();
+};
+
+const checkPersonalBest = function () {
+  if (model.state.roundsPassed > model.state.personalBest) {
+    model.setPersonalBest();
+    recordsView.render(model.state.personalBest);
+    return true;
+  }
+  return false;
 };
 
 const init = function () {
+  model.getPersonalBest();
   titleView.render(model.state.colors);
+  recordsView.render(model.state.personalBest);
 
   document.addEventListener('DOMContentLoaded', () => {
     introView.addHandlerStartGame(controlPlayGame);
