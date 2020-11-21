@@ -2,6 +2,7 @@ export const state = {
   colors: ['blue', 'red', 'yellow', 'green'],
   gameActive: false,
   playersTurn: false,
+  roundsPassed: 0,
   computersColorPattern: [],
   playersColorPattern: [],
 };
@@ -26,6 +27,18 @@ export const setPlayersColorPattern = function () {
   );
 };
 
+export const increaseRoundsPassed = function () {
+  state.roundsPassed++;
+};
+
 export const getNextPlayerPatternColor = function () {
   return state.playersColorPattern.shift();
+};
+
+export const resetGame = function () {
+  this.state.gameActive = false;
+  this.state.playersTurn = false;
+  this.state.roundsPassed = 0;
+  this.state.computersColorPattern = [];
+  this.state.playersColorPattern = [];
 };

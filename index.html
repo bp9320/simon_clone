@@ -70,13 +70,18 @@
 
         <div class="intro-container intro-container__group">
           <h3>Ready to give it a try?</h3>
-          <button id="btn">Let's Do This!</button>
+          <button id="btn" class="btn">
+            <span class="btn__text">Let's Do This!</span>
+          </button>
         </div>
       </div>
     </section>
 
     <section class="game-container">
-      <div id="patternDisplayCircle" class="circle circle--hide"></div>
+      <div id="patternDisplayCircle" class="circle circle--hide">
+        <span class="circle--content circle--message"></span>
+        <span class="circle--content circle--patternCountdown"></span>
+      </div>
 
       <div id="playerInputs">
         <div class="circle circle--color-0" data-color-index="0"></div>
@@ -89,7 +94,9 @@
     <section id="gameOverSection" class="hidden">
       <div id="gameOverModal">
         <p class="gameOver__message">You lasted 8 rounds!</p>
-        <button class="gameOver__btn">Try again?</button>
+        <button class="gameOver__btn btn">
+          <span class="btn__text">Try again?</span>
+        </button>
       </div>
     </section>
   </body>
