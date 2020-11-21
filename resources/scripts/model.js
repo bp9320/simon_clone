@@ -3,6 +3,7 @@ export const state = {
   gameActive: false,
   playersTurn: false,
   roundsPassed: 0,
+  personalBest: 0,
   computersColorPattern: [],
   playersColorPattern: [],
 };
@@ -33,6 +34,19 @@ export const increaseRoundsPassed = function () {
 
 export const getNextPlayerPatternColor = function () {
   return state.playersColorPattern.shift();
+};
+
+export const getPersonalBest = function () {
+  const personalBest = JSON.parse(localStorage.getItem('personalBest'));
+  console.log(personalBest);
+  if (!personalBest) return;
+
+  state.personalBest = personalBest;
+};
+
+export const setPersonalBest = function () {
+  state.personalBest = state.roundsPassed;
+  localStorage.setItem('personalBest', JSON.stringify(state.personalBest));
 };
 
 export const resetGame = function () {
