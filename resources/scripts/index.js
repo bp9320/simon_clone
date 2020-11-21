@@ -3,6 +3,7 @@ import titleView from './views/TitleView.js';
 import introView from './views/IntroView.js';
 import patternDisplayView from './views/PatternDisplayView.js';
 import playerInputsView from './views/PlayerInputsView.js';
+import gameOverView from './views/GameOverView.js';
 
 const controlPlayGame = () => {
   model.toggleGameActive();
@@ -13,6 +14,7 @@ const controlPlayGame = () => {
 const startPlayersTurn = () => {
   model.setPlayersColorPattern();
   model.togglePlayersTurn();
+  patternDisplayView.renderCountdown(model.state.playersColorPattern);
 };
 
 const runComputersTurn = () => {
@@ -29,8 +31,15 @@ const controlCheckPlayerInput = function (playerInput) {
   if (playerInput !== nextColorInPlayerPattern) {
     endGame();
   } else {
+    patternDisplayView.renderCountdown(model.state.playersColorPattern);
     checkIfTurnEnded();
   }
+};
+
+const controlResetGame = function () {
+  model.resetGame();
+  patternDisplayView.clear();
+  controlPlayGame();
 };
 
 const checkIfTurnEnded = () => {
@@ -40,17 +49,15 @@ const checkIfTurnEnded = () => {
 };
 
 const endTurn = () => {
+  model.increaseRoundsPassed();
   model.togglePlayersTurn();
   runComputersTurn();
 };
 
 const endGame = () => {
   model.toggleGameActive();
-  alert(
-    `You lasted ${model.state.computersColorPattern.length - 1} round${
-      model.state.computersColorPattern.length - 1 === 1 ? '' : 's'
-    }!`
-  );
+  patternDisplayView.renderMessage();
+  gameOverView.render(model.state.roundsPassed);
 };
 
 const init = function () {
@@ -59,6 +66,7 @@ const init = function () {
   document.addEventListener('DOMContentLoaded', () => {
     introView.addHandlerStartGame(controlPlayGame);
     playerInputsView.addHandlerInputCircle(controlCheckPlayerInput);
+    gameOverView.addHandlerReset(controlResetGame);
   });
 };
 

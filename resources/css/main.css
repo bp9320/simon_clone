@@ -30,7 +30,8 @@ header {
 }
 
 h2,
-h3 {
+h3,
+.gameOver__message {
   font-family: 'Biryani', sans-serif;
 }
 
@@ -127,6 +128,18 @@ h3 {
   background-color: transparent;
   border-radius: 200px;
   margin: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle--content {
+  display: block;
+}
+
+.circle--patternCountdown {
+  font-size: 3rem;
 }
 
 #patternDisplayCircle {
@@ -183,4 +196,70 @@ h3 {
 
 .title__letter--color-3 {
   color: var(--color-3);
+}
+
+#gameOverSection {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(120, 120, 120, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#gameOverModal {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: dodgerblue;
+  padding: 3rem;
+  border-radius: 0.8rem;
+}
+
+.gameOver__message {
+  margin-bottom: 1rem;
+}
+
+#gameOverSection.hidden {
+  display: none;
+  opacity: 0;
+  z-index: -1;
+}
+
+.btn {
+  background-color: black;
+  color: silver;
+  border-top: 1rem solid var(--color-0);
+  border-right: 1rem solid var(--color-1);
+  border-bottom: 1rem solid var(--color-2);
+  border-left: 1rem solid var(--color-3);
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(-45deg);
+  transition: all ease-in-out 0.25s;
+}
+
+.btn:before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  padding: 100% 0 0 0;
+}
+
+.btn__text {
+  display: inline-block;
+  padding: 0 2% 0 2%;
+  vertical-align: middle;
+  transform: rotate(45deg);
+}
+
+.btn:hover {
+  transform: scale(1.1) rotate(-45deg);
 }

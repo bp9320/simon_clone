@@ -9,6 +9,11 @@
       rel="stylesheet"
     />
     <script defer type="module" src="./resources/scripts/index.js"></script>
+    <script
+      defer
+      src="https://kit.fontawesome.com/361ababa29.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Simon Clone</title>
   </head>
   <body>
@@ -65,19 +70,33 @@
 
         <div class="intro-container intro-container__group">
           <h3>Ready to give it a try?</h3>
-          <button id="btn">Let's Do This!</button>
+          <button id="btn" class="btn">
+            <span class="btn__text">Let's Do This!</span>
+          </button>
         </div>
       </div>
     </section>
 
     <section class="game-container">
-      <div id="patternDisplayCircle" class="circle circle--hide"></div>
+      <div id="patternDisplayCircle" class="circle circle--hide">
+        <span class="circle--content circle--message"></span>
+        <span class="circle--content circle--patternCountdown"></span>
+      </div>
 
       <div id="playerInputs">
         <div class="circle circle--color-0" data-color-index="0"></div>
         <div class="circle circle--color-1" data-color-index="1"></div>
         <div class="circle circle--color-2" data-color-index="2"></div>
         <div class="circle circle--color-3" data-color-index="3"></div>
+      </div>
+    </section>
+
+    <section id="gameOverSection" class="hidden">
+      <div id="gameOverModal">
+        <p class="gameOver__message">You lasted 8 rounds!</p>
+        <button class="gameOver__btn btn">
+          <span class="btn__text">Try again?</span>
+        </button>
       </div>
     </section>
   </body>
